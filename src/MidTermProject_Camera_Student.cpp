@@ -20,8 +20,7 @@
 using namespace std;
 
 /* MAIN PROGRAM */
-int main(int argc, const char *argv[])
-{
+int main(int argc, const char *argv[]) {
 
     /* INIT VARIABLES AND DATA STRUCTURES */
 
@@ -43,8 +42,7 @@ int main(int argc, const char *argv[])
 
     /* MAIN LOOP OVER ALL IMAGES */
 
-    for (size_t imgIndex = 0; imgIndex <= imgEndIndex - imgStartIndex; imgIndex++)
-    {
+    for (size_t imgIndex = 0; imgIndex <= imgEndIndex - imgStartIndex; imgIndex++) {
         /* LOAD IMAGE INTO BUFFER */
 
         // assemble filenames for current index
@@ -63,7 +61,7 @@ int main(int argc, const char *argv[])
         // push image into data frame buffer
         DataFrame frame;
         frame.cameraImg = imgGray;
-        if(dataBuffer.size()==dataBufferSize)
+        if (dataBuffer.size() == dataBufferSize)
             dataBuffer.pop_front();
         dataBuffer.push_back(frame);
 
@@ -74,19 +72,18 @@ int main(int argc, const char *argv[])
 
         // extract 2D keypoints from current image
         vector<cv::KeyPoint> keypoints; // create empty feature list for current image
-        string detectorType = "SHITOMASI";
+        string detectorType = "SIFT"; //// -> HARRIS, FAST, BRISK, ORB, AKAZE, SIFT
 
         //// STUDENT ASSIGNMENT
         //// TASK MP.2 -> add the following keypoint detectors in file matching2D.cpp and enable string-based selection based on detectorType
         //// -> HARRIS, FAST, BRISK, ORB, AKAZE, SIFT
 
-        if (detectorType.compare("SHITOMASI") == 0)
-        {
-            detKeypointsShiTomasi(keypoints, imgGray, false);
-        }
-        else
-        {
-            //...
+        if (detectorType.compare("SHITOMASI") == 0) {
+            detKeypointsShiTomasi(keypoints, imgGray, bVis);
+        } else if (detectorType.compare("HARRIS") == 0) {
+            detKeypointsHarris(keypoints, imgGray, bVis);
+        } else {
+            detKeypointsModern(keypoints, imgGray, detectorType, !bVis);
         }
         //// EOF STUDENT ASSIGNMENT
 
@@ -96,8 +93,7 @@ int main(int argc, const char *argv[])
         // only keep keypoints on the preceding vehicle
         bool bFocusOnVehicle = true;
         cv::Rect vehicleRect(535, 180, 180, 150);
-        if (bFocusOnVehicle)
-        {
+        if (bFocusOnVehicle) {
             // ...
         }
 
@@ -105,12 +101,11 @@ int main(int argc, const char *argv[])
 
         // optional : limit number of keypoints (helpful for debugging and learning)
         bool bLimitKpts = false;
-        if (bLimitKpts)
-        {
+        if (bLimitKpts) {
             int maxKeypoints = 50;
 
-            if (detectorType.compare("SHITOMASI") == 0)
-            { // there is no response info, so keep the first 50 as they are sorted in descending quality order
+            if (detectorType.compare("SHITOMASI") ==
+                0) { // there is no response info, so keep the first 50 as they are sorted in descending quality order
                 keypoints.erase(keypoints.begin() + maxKeypoints, keypoints.end());
             }
             cv::KeyPointsFilter::retainBest(keypoints, maxKeypoints);
@@ -129,7 +124,8 @@ int main(int argc, const char *argv[])
 
         cv::Mat descriptors;
         string descriptorType = "BRISK"; // BRIEF, ORB, FREAK, AKAZE, SIFT
-        descKeypoints((dataBuffer.end() - 1)->keypoints, (dataBuffer.end() - 1)->cameraImg, descriptors, descriptorType);
+        descKeypoints((dataBuffer.end() - 1)->keypoints, (dataBuffer.end() - 1)->cameraImg, descriptors,
+                      descriptorType);
         //// EOF STUDENT ASSIGNMENT
 
         // push descriptors for current frame to end of data buffer
@@ -164,8 +160,7 @@ int main(int argc, const char *argv[])
 
             // visualize matches between current and previous image
             bVis = true;
-            if (bVis)
-            {
+            if (bVis) {
                 cv::Mat matchImg = ((dataBuffer.end() - 1)->cameraImg).clone();
                 cv::drawMatches((dataBuffer.end() - 2)->cameraImg, (dataBuffer.end() - 2)->keypoints,
                                 (dataBuffer.end() - 1)->cameraImg, (dataBuffer.end() - 1)->keypoints,
