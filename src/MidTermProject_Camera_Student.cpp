@@ -44,7 +44,7 @@ int main(int argc, const char *argv[]) {
     double logTotalTime = 0.0;
 
     /* MAIN LOOP OVER ALL IMAGES */
-    string detectorType = "SIFT"; //// -> SHITOMASI, HARRIS, FAST, BRISK, ORB, AKAZE, SIFT
+    string detectorType = "FAST"; //// -> SHITOMASI, HARRIS, FAST, BRISK, ORB, AKAZE, SIFT
     string descriptorType = "SIFT"; // BRISK, BRIEF, ORB, FREAK, AKAZE, SIFT
     for (size_t imgIndex = 0; imgIndex <= imgEndIndex - imgStartIndex; imgIndex++) {
         /* LOAD IMAGE INTO BUFFER */
@@ -152,7 +152,7 @@ int main(int argc, const char *argv[]) {
 
             vector<cv::DMatch> matches;
             string matcherType = "MAT_BF";        // MAT_BF, MAT_FLANN
-            string descriptorTypeCategory = "DES_HOG"; // DES_BINARY, DES_HOG
+            string descriptorTypeCategory = "DES_BINARY"; // DES_BINARY, DES_HOG
             if (descriptorType.compare("SIFT")==0) descriptorTypeCategory = "DES_BINARY";
             string selectorType = "SEL_KNN";       // SEL_NN, SEL_KNN
 

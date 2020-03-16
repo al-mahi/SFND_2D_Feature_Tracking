@@ -4,42 +4,36 @@ detectorType+descriptorType SHITOMASI+ORB #keypoints 1179 #matches 907 time 183.
 detectorType+descriptorType SHITOMASI+FREAK #keypoints 1179 #matches 768 time 139.767 ms
 detectorType+descriptorType SHITOMASI+AKAZE #keypoints 1179 N/A ms
 detectorType+descriptorType SHITOMASI+SIFT #keypoints 1179 #matches 927 time 223.195 ms
-
 detectorType+descriptorType HARRIS+BRISK #keypoints 248 #matches 142 time 176.408 ms
 detectorType+descriptorType HARRIS+BRIEF #keypoints 248 #matches 173 time 189.947 ms
 detectorType+descriptorType HARRIS+ORB #keypoints 248 #matches 160 time 180.507 ms
 detectorType+descriptorType HARRIS+FREAK #keypoints 248 #matches 144 time 211.921 ms
 detectorType+descriptorType HARRIS+FREAK #keypoints 248 N/A ms
 detectorType+descriptorType HARRIS+SIFT #keypoints 248 #matches 163 time 184.814 ms
-
 detectorType+descriptorType FAST+BRISK #keypoints 4094 #matches 2183 time 40.7903 ms
 detectorType+descriptorType FAST+BRIEF #keypoints 4094 #matches 2831 time 44.0156 ms
 detectorType+descriptorType FAST+ORB #keypoints 4094 #matches 2762 time 63.9577 ms
 detectorType+descriptorType FAST+FREAK #keypoints 4094 #matches 2233 time 70.5224 ms
 detectorType+descriptorType FAST+AKAZE #keypoints 4094 N/A
 detectorType+descriptorType FAST+SIFT #keypoints 4094 #matches 2782 time 51.1268 ms
-
 detectorType+descriptorType BRISK+BRISK #keypoints 2762 #matches 1570 time 2730.06 ms
 detectorType+descriptorType BRISK+BRIEF #keypoints 2762 #matches 1704 time 2794.21 ms
 detectorType+descriptorType BRISK+ORB #keypoints 2762 #matches 1510 time 3454.98 ms
 detectorType+descriptorType BRISK+FREAK #keypoints 2762 #matches 1524 time 3170.98 ms
 detectorType+descriptorType BRISK+AKAZE #keypoints 2762 N/A
 detectorType+descriptorType BRISK+SIFT #keypoints 2762 #matches 1646 time 2844.48 ms
-
 detectorType+descriptorType ORB+BRISK #keypoints 1161 #matches 751 time 99.3423 ms
 detectorType+descriptorType ORB+BRIEF #keypoints 1161 #matches 545 time 96.4621 ms
 detectorType+descriptorType ORB+ORB #keypoints 1161 #matches 761 time 101.593 ms
 detectorType+descriptorType ORB+FREAK #keypoints 1161 #matches 420 time 90.2993 ms
 detectorType+descriptorType ORB+AKAZE #keypoints 1161 N/A
 detectorType+descriptorType ORB+SIFT #keypoints 1161 #matches 763 time 102.04 ms
-
 detectorType+descriptorType AKAZE+BRISK #keypoints 1670 #matches 1215 time 744.039 ms
 detectorType+descriptorType AKAZE+BRIEF #keypoints 1670 #matches 1266 time 772.091 ms
 detectorType+descriptorType AKAZE+ORB #keypoints 1670 #matches 1186 time 850.183 ms
 detectorType+descriptorType AKAZE+FREAK #keypoints 1670 #matches 1187 time 746.323 ms
 detectorType+descriptorType AKAZE+AKAZE #keypoints 1670 #matches 1259 time 768.481 ms
 detectorType+descriptorType AKAZE+SIFT #keypoints 1670 #matches 1270 time 1133.32 ms
-
 detectorType+descriptorType SIFT+BRISK #keypoints 1386 #matches 592 time 1388.96 ms
 detectorType+descriptorType SIFT+BRIEF #keypoints 1386 #matches 702 time 1346.09 ms
 detectorType+descriptorType SIFT+ORB error: (-215:Assertion failed) inv_scale_x > 0 in function 'resize'
